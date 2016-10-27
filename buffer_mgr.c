@@ -457,7 +457,7 @@ RC pinPage (BM_BufferPool *const bm, BM_PageHandle *const page,
             checkStatus = Not_FindPage;
             
             if (BM.bufferPool_bm.strategy == RS_FIFO) {
-                pnum= strategy(BM);
+                pnum= strategyFIFOandLRU(BM);
                 if ((BM.bufferPool_bm.mgmtData +pnum)->dirty){
                     
                     forcePage(bm, (BM_PageHandle *)BM.bufferPool_bm.mgmtData +pnum);  // warnning for the page
@@ -465,7 +465,7 @@ RC pinPage (BM_BufferPool *const bm, BM_PageHandle *const page,
             }
             
             if(BM.bufferPool_bm.strategy == RS_LRU){
-                pnum = strategy(BM);
+                pnum = strategyFIFOandLRU(BM);
                 if ((BM.bufferPool_bm.mgmtData +pnum)->dirty){
                     forcePage(bm, (BM_PageHandle *)BM.bufferPool_bm.mgmtData +pnum);  // warnning for the page
                 }
