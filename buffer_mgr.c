@@ -17,7 +17,7 @@
 #include "dt.h"
 
 // cannot use for the right now
-#include "replacement_strategy.h"
+// #include "replacement_strategy.h"
 
 
 
@@ -534,10 +534,11 @@ PageNumber *getFrameContents (BM_BufferPool *const bm){
     BM.bufferPool_bm = *bm;
     
     pageFrame *pf = BM.bufferPool_bm.mgmtData;
+    int i =0;
     
     PageNumber *frameContents = (PageNumber*)malloc(BM.bufferPool_bm.numPages*sizeof(PageNumber));
     
-    for (int i=0; i<BM.bufferPool_bm.numPages; i++){
+    for ( i=0; i<BM.bufferPool_bm.numPages; i++){
         if((pf+i)->pageHandle.data == NULL){
             frameContents[i] = NO_PAGE;
         }
@@ -574,7 +575,8 @@ bool *getDirtyFlags (BM_BufferPool *const bm){
 
     bool *dirtyflag = (bool*) malloc (BM.bufferPool_bm.numPages * sizeof(bool));
     
-    for (int i=0; i< BM.bufferPool_bm.numPages; i++){
+    int i =0;
+    for (i=0; i< BM.bufferPool_bm.numPages; i++){
         dirtyflag[i]= (pf + i)->dirty;
     }
     
@@ -608,7 +610,8 @@ int *getFixCounts (BM_BufferPool *const bm){
     // set the memory for the fixcount
     int *FixCount = (int*) malloc (BM.bufferPool_bm.numPages * sizeof( int));
     
-    for (int i=0; i< BM.bufferPool_bm.numPages;i++){
+    int i;
+    for ( i=0; i< BM.bufferPool_bm.numPages;i++){
         FixCount[i] = (pf+ i)->fixCounts;
     }
     
