@@ -492,7 +492,7 @@ RC pinPage (BM_BufferPool *const bm, BM_PageHandle *const page,
         pf->pageHandle.pageNum = pageNum;
         pf->dirty = (BM.bufferPool_bm.mgmtData +pnum)->dirty;
         pf->strategyAttribute = (BM.bufferPool_bm.mgmtData + pnum)->strategyAttribute;
-        updateAttribute(BM.bufferPool_bm.mgmtData + pnum);
+        updataAttribute(BM.bufferPool_bm.mgmtData + pnum);
         fclose( fp);
         
     }
